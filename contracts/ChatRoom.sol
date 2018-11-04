@@ -1,4 +1,4 @@
-pragma solidity 0.4.25;
+pragma solidity ^0.4.24;
 
 contract ChatRoom {
 
@@ -13,19 +13,20 @@ contract ChatRoom {
 
     uint public messagesCount;
 
-    event newMessage(uint indexed _id, address indexed _sender, string _content);
+    event newMessageEvent(uint indexed _id, address indexed _sender, string _content);
 
-    function send_message(string _content) private {
-        messagesCount++;
+    function send_message(string _content) public {
 
-        messages[messagesCount] = Message(
+        messages[messagesCount] =  Message(
                 messagesCount, msg.sender, _content, now
             );
 
-        emit newMessage(messagesCount, msg.sender, _content);
+        messagesCount++;
+
+        emit newMessageEvent(messagesCount, msg.sender, _content);
     }
 
-    function getMessages() public constant returns (uint[]){
+    function getMessages() public constant returns (uint []){
         if (messagesCount == 0) {
             return new uint[](0);
         }
@@ -41,6 +42,10 @@ contract ChatRoom {
 
     function getTotalNumberOfMessages() public constant returns (uint) {
         return messagesCount;
+    }
+
+    constructor () public {
+        messagesCount = 0;
     }
 
 }
