@@ -18,12 +18,16 @@ Download the ganache app.
 
 Run ganache, set port number and change the port number in truffle.js file.
 
+or
+
+Clone this project and run `npm install`.
+
 # Run
 
 1. If first time, `truffle migrate` or else `truffle migrate --reset`
 
-2. `npm rum build` - opens `localhost:3000` by default.
+2. `npm run dev` - opens `localhost:3000` by default.
 
-3. Run Ganache app and Login through Metamask.
+3. Run Ganache app and Login through MetaMask.
 
-This loads a basic chat app, where each message sent from an account is authorized by MetaMask.
+This loads a basic chat app, where each message sent from an account that is provided and authorised by MetaMask.
